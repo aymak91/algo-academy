@@ -1,7 +1,7 @@
 # https://leetcode.com/problems/valid-parentheses
 
 class Solution:
-    def isValid(self, s):
+    def isValid(self, s: str) -> bool:
 
         stack = []
         closeToOpen = {
@@ -13,10 +13,9 @@ class Solution:
         for char in s:
             if char not in closeToOpen:
                 stack.append(char)
-                continue
-            
-            if not stack or stack[-1] != closeToOpen[char]:
+            elif not stack or stack[-1] != closeToOpen[char]:
                 return False
-            stack.pop()    
+            else:
+                stack.pop()
 
         return len(stack) == 0

@@ -11,16 +11,13 @@ class Solution:
                 'end': intervals[i][1]
             }
 
-            lastIntvlIdx = len(stack) - 1
             lastIntvl = {
-                'start': stack[lastIntvlIdx][0],
-                'end': stack[lastIntvlIdx][1]
+                'start': stack[-1][0],
+                'end': stack[-1][1]
             }
 
             if currIntvl['start'] <= lastIntvl['end'] and currIntvl['end'] > lastIntvl['end']: 
-                stack[lastIntvlIdx][1] = currIntvl['end']
-            elif currIntvl['start'] <= lastIntvl['end'] and currIntvl['end'] <= lastIntvl['end']: 
-                continue
+                stack[-1][1] = currIntvl['end']
             elif currIntvl['start'] > lastIntvl['end']: 
                 stack.append(intervals[i])
 
